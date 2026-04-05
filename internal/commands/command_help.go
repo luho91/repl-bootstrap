@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func commandHelp() error {
+func commandHelp(args []string) error {
 	fmt.Println("The following commands are available:")
 	fmt.Println()
 	for _, command := range Commands {

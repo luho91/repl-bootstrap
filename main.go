@@ -9,8 +9,9 @@ import(
 )
 
 func main() {
-	fmt.Println("REB > Welcome to repl-bootstrap!")
-	fmt.Println("REB > Type \"help\" to see an overview of possible commands.")
+	fmt.Println("Welcome to repl-bootstrap!")
+	fmt.Println("Type \"help\" to see an overview of possible commands.")
+	fmt.Println("Type \"next\" to see tips for what to do next (or how to begin).")
 
 	scanner := bufio.NewScanner(os.Stdin)
 	
@@ -24,10 +25,14 @@ func main() {
 		}
 
 		cmdString := input[0]
+		args := input[1:]
 		command, ok := commands.Commands[cmdString]
 
 		if ok {
-			command.Callback()
+			err := command.Callback(args)
+			if err != nil {
+				fmt.Printf("Lukas is an idiot and wrote code that caused an error in production: %v\n", err)
+			}
 		} else {
 			fmt.Printf("Unknown command: %s\n", cmdString)
 		}
