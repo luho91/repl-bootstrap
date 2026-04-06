@@ -25,5 +25,10 @@ func init() {
 			Description:	"Show tips for what to do next, from the state your repl is currently in",
 			Callback:		CommandNext,
 		},
+		"create": {
+			Name:			"create",
+			Description:	"Create anything - help create for more details",
+			Callback:		CommandCreate,
+		},
 	}
 }

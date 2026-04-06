@@ -31,7 +31,7 @@ func main() {
 		if ok {
 			err := command.Callback(args)
 			if err != nil {
-				fmt.Printf("Lukas is an idiot and wrote code that caused an error in production: %v\n", err)
+				fmt.Printf("Error: %v\n", err)
 			}
 		} else {
 			fmt.Printf("Unknown command: %s\n", cmdString)
