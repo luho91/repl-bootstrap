@@ -1,7 +1,9 @@
 package commands
 
 import (
+	tools "github.com/luho91/repl-bootstrap/internal/tools"
 	"fmt"
+	"os"
 )
 
 type createArg string
@@ -22,5 +24,24 @@ func CommandCreate(args []string) error {
 }
 
 func createConfig() error {
+	configFolder, err := tools.GetConfigFolderPath()
+
+	if err != nil {
+		return err
+	}
+
+	err = os.MkdirAll(configFolder, 0o775)
+
+	if err != nil {
+		return err
+	}
+
+	configPath := tools.GetConfigFilePath(configFolder)
+
+	f, err := os.Create(configPath)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
 	return nil
 }
