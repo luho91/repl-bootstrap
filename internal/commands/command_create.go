@@ -43,5 +43,6 @@ func createConfig() error {
 		return err
 	}
 	defer f.Close()
-	return nil
+	_, err = f.WriteString("{}")
+	return err
 }

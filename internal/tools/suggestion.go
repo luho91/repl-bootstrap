@@ -27,5 +27,11 @@ func getSuggestionMap() map[StateIssue]Suggestion {
 		Command:		"create config",
 	}
 
+	suggestions[IssueEmptyConfig] = Suggestion {
+		Title:			"Config file is empty",
+		Description:	"The config file was found, but it has no content. This should not happen! Did you create it yourself?",
+		Command:		"create config",
+	}
+
 	return suggestions
 }
